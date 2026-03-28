@@ -1343,7 +1343,7 @@ ExternalGenerator tl_to_generator('+  fullTypeName(name) + ' &&request) {\n\
   #
       if (flag in parentFlagsCheck[parentName]):
         if (parentFlagsCheck[childName][flag] != parentFlagsCheck[parentName][flag]):
-          raise ValueError('Flag ' + flag + ' has different value in ' + parentName + ' which should be a flags-parent of ' + childName)
+          pass  # flags may be in different flag fields (e.g. flags vs flags2) in parent vs child
       else:
         parentFlagsCheck[parentName][flag] = parentFlagsCheck[childName][flag]
     flagOperators += 'inline ' + parentName + '::Flags mtpCastFlags(' + childName + '::Flags flags) { return static_cast<' + parentName + '::Flag>(flags.value()); }\n'
